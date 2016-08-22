@@ -6,7 +6,7 @@
 	<body>
 		<h1>Anagram Game</h1>
 		<h2>Word: {{ word }}</h2>
-		<form action="/word" method="post">
+		<form action="/word/{{ word }}" method="post">
 			<input type="radio" value="yes" name="is-anagram"/> Yes
 			<input type="radio" value="no" name="is-anagram" /> No
 			<input type="submit" value="Check" />
