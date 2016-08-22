@@ -19,6 +19,11 @@ word_list = [
 		}
 ]
 
+def get_word(word):
+	for dictionary in word_list:
+		if dictionary['word'] == word:
+			return dictionary
+
 
 @get('/')
 def index():
@@ -34,8 +39,12 @@ def word():
 
 @post('/word/<word>')
 def check_word(word):
-	return word
-
+	user_response = request.forms.get('is-anagram')
+	dictionary = get_word(word)
+	if user_response == str(dictionary['is_anagram']):
+		return "Got it!"
+	else:
+		return "nope!"
 
 
 bottle.run(host='0.0.0.0', port=argv[1])
