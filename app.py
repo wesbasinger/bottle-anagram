@@ -42,9 +42,9 @@ def check_word(word):
 	user_response = request.forms.get('is-anagram')
 	dictionary = get_word(word)
 	if user_response == str(dictionary['is_anagram']):
-		return "Got it!"
+		return template('result.tpl', res = "Yep, you got it!")
 	else:
-		return "nope!"
+		return template('result.tpl', res = "Nope, try again.")
 
 
 bottle.run(host='0.0.0.0', port=argv[1])
